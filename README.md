@@ -19,15 +19,24 @@
     npm install
     ```
 
-2. Dockerコンテナの起動:
+2. `.env`ファイルを作成し、以下の環境変数を設定
+
+    ```
+      DATABASE_URL_1=your_database_url_1
+      DATABASE_URL_2=your_database_url_2
+    ```
+
+3. Dockerコンテナの起動:
     ```bash
     docker-compose up -d
     ```
 
-3. PrismaのスキーマからPrisma Client生成、DBコンテナへ反映:
+4. PrismaのスキーマからPrisma Client生成、DBコンテナへ反映:
     ```bash
-    npx prisma migrate generate
-    npx prisma migrate dev
+    npx prisma generate --schema=./prisma/db1.prisma
+    npx prisma generate --schema=./prisma/db2.prisma
+    npx prisma migrate dev --schema=./prisma/db1.prisma
+    npx prisma migrate dev --schema=./prisma/db2.prisma
     ```
 
 ## 使用方法
@@ -44,15 +53,6 @@
 #### `createStudentAndUserWithRawQuery`
 
 このメソッドは、生のSQLクエリを使用して学生とユーザーを作成します。
-
-
-## 環境変数
-
-`.env`ファイルを作成し、以下の環境変数を設定してください。
-
-`DATABASE_URL_1=your_database_url_1`
-`DATABASE_URL_2=your_database_url_2`
-
 
 ## スクリプト
 
