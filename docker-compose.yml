@@ -1,0 +1,20 @@
+services:
+  db:
+    image: mysql:8.0
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    container_name: multi-db
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      # MYSQL_DATABASE: test_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql/mysql-init:/docker-entrypoint-initdb.d
+    restart: always
+
+volumes:
+  db_data:
