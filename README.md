@@ -67,6 +67,6 @@
 
 ## 現状検証の結果
 
-Prisma + MySQL の組み合わせで複数のDBスキーマを使用した分散トランザクションは困難。
-参考: https://zenn.dev/cohky/articles/prisma-rls-ops
-確認できる限りでは生クエリであれば、各DBはロールバックできるか
+Prisma + MySQL の組み合わせで複数のDBスキーマを使用した分散トランザクションは困難。<br>
+参考: https://zenn.dev/cohky/articles/prisma-rls-ops<br>
+確認できる限りでは生クエリであれば、各DBはロールバックできそう。
